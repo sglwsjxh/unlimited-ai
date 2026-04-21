@@ -1,5 +1,8 @@
 # unlimited AI
 
+TUI 中的无限制的 AI 对话，基于 NVIDIA AI 平台的 API 实现
+支持**langchain 多轮对话**，**rich 流式渲染markdown**
+
 **AI 又不傻，为什么要限制它呢？**
 
  - sys_prompt1 和 sys_prompt2 是适合 llama 系列和 glm 系列的模型
