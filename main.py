@@ -6,9 +6,16 @@ _USE_COLOR = sys.stdout.isatty() and os.getenv("NO_COLOR") is None
 _REASONING_COLOR = "\033[90m" if _USE_COLOR else ""
 _RESET_COLOR = "\033[0m" if _USE_COLOR else ""
 
+try:
+    with open("api_key.txt", "r", encoding="utf-8") as f:
+        api_key = f.read().strip()
+except FileNotFoundError:
+    print("[-] 错误：未找到 api_key.txt 文件。请在项目根目录下创建一个名为 api_key.txt 的文件，并将您的 API 密钥粘贴到其中")
+    sys.exit(1)
+
 client = OpenAI(
     base_url = "https://integrate.api.nvidia.com/v1",
-    api_key = "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"
+    api_key = api_key
 )
 
 with open("sys_prompt3.txt", "r", encoding="utf-8") as f:
