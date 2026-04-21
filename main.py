@@ -6,11 +6,9 @@ _USE_COLOR = sys.stdout.isatty() and os.getenv("NO_COLOR") is None
 _REASONING_COLOR = "\033[90m" if _USE_COLOR else ""
 _RESET_COLOR = "\033[0m" if _USE_COLOR else ""
 
-try:
-    with open("api_key.txt", "r", encoding="utf-8") as f:
-        api_key = f.read().strip()
-except FileNotFoundError:
-    print("[-] 错误：未找到 api_key.txt 文件。请在项目根目录下创建一个名为 api_key.txt 的文件，并将您的 API 密钥粘贴到其中")
+api_key = os.getenv("NVIDIA_API_KEY")
+if not api_key:
+    print("Error: NVIDIA_API_KEY environment variable not set.")
     sys.exit(1)
 
 client = OpenAI(

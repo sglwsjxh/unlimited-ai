@@ -7,6 +7,7 @@
 
 ## 使用方法
 1. 克隆本仓库并安装依赖
+
 ```bash
 git clone https://github.com/sglwsjxh/unlimited-ai.git
 cd unlimited-ai
@@ -18,9 +19,17 @@ source venv/bin/activate  # Linux/Mac
 pip install openai
 ```
 
-2. 在根目录下创建一个名为 `api_key.txt` 的文件，并从 [NVIDIA AI 平台](https://build.nvidia.com/settings/api-keys) 获取 API Key，粘贴到 `api_key.txt` 中并保存。
+2. 设置用户 API
+ - 从 [NVIDIA AI 平台](https://build.nvidia.com/settings/api-keys) 获取 API Key
+ - 设置环境变量
 
-> 可以在 main.py 中修改 sys_prompt 来适配不同的模型，或者自己设计新的 sys_prompt 来适配你喜欢的模型
+```bash
+cp .env.example .env
+
+# 编辑 .env 文件，将 NVIDIA_API_KEY 的值替换为你的 API Key
+```
+
+> 可以在 main.py 中修改 sys_prompt 来适配不同的模型，或者自己设计 sys_prompt 来适配你自己的模型
 
 ## 开源协议
 MIT License
