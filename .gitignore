@@ -1,7 +1,21 @@
 # python
-venv/
+*venv/
 __pycache__/
 *.pyc
+
+# build
+dist/
+build/
+*.exe
+
+# temp
+tmp/
+temp/
+*.tmp
+*.bak
+
+# logs
+*.log
 
 # config
 .env

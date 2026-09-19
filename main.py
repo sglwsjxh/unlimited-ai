@@ -11,20 +11,31 @@ import sys
 
 load_dotenv()
 console = Console()
+console.clear()
 
 api_key = os.getenv("NVIDIA_API_KEY")
 if not api_key:
     console.print("[bold red]Error: NVIDIA_API_KEY 环境变量未设置。[/bold red]")
     sys.exit(1)
 
-with open("sys_prompt3.txt", "r", encoding="utf-8") as f:
+model_name = os.getenv("MODAL_NAME")
+if not model_name:
+    console.print("[bold red]Error: MODAL_NAME 环境变量未设置。[/bold red]")
+    sys.exit(1)
+
+sys_prompt_file = os.getenv("SYS_PROMPT_FILE")
+if not sys_prompt_file:
+    console.print("[bold red]Error: SYS_PROMPT_FILE 环境变量未设置。[/bold red]")
+    sys.exit(1)
+
+with open(sys_prompt_file, "r", encoding="utf-8") as f:
     sys_prompt = f.read()
 
 client = ChatNVIDIA(
-    model="openai/gpt-oss-120b",
+    model=model_name,
     api_key=api_key,
     temperature=1,
-    top_p=1,
+    top_p=0.95,
     max_completion_tokens=16384,
     model_kwargs={
         "chat_template_kwargs": {

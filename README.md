@@ -5,8 +5,9 @@ TUI 中的无限制的 AI 对话，基于 NVIDIA AI 平台的 API 实现
 
 **AI 又不傻，为什么要限制它呢？**
 
- - sys_prompt1 和 sys_prompt2 是适合 llama 系列和 glm 系列的模型
- - sys_prompt3 是适合 gpt-oss 系列的模型
+ - sys_prompt1 适合 llama 系列的模型
+ - sys_prompt2 适合 glm 系列的模型
+ - sys_prompt3 适合 gpt-oss 系列的模型
 
 ## 使用方法
 1. 克隆本仓库并安装依赖
