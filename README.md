@@ -5,6 +5,7 @@ TUI 中的无限制的 AI 对话，基于 NVIDIA AI 平台的 API 实现
 
 **AI 又不傻，为什么要限制它呢？**
 
+ - sys_prompt 最新的版本，适合大多数大语言模型，效果较为强烈
  - sys_prompt1 适合 llama 系列的模型
  - sys_prompt2 适合 glm 系列的模型
  - sys_prompt3 适合 gpt-oss 系列的模型
@@ -20,7 +21,7 @@ python -m venv venv
 .\venv\Scripts\activate  # Windows
 source venv/bin/activate  # Linux/Mac
 
-pip install openai
+pip install -r requirements.txt
 ```
 
 2. 设置用户 API
@@ -33,7 +34,7 @@ cp .env.example .env
 # 编辑 .env 文件，将 NVIDIA_API_KEY 的值替换为你的 API Key
 ```
 
-> 可以在 main.py 中修改 sys_prompt 来适配不同的模型，或者自己设计 sys_prompt 来适配你自己的模型
+> 可以在 `.env` 文件中修改 `SYS_PROMPT_FILE` 来适配不同的模型，或者自己设计 sys_prompt 来适配你自己的模型
 
 ## 开源协议
 MIT License
