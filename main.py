@@ -1,4 +1,4 @@
-from langchain_nvidia_ai_endpoints import ChatNVIDIA
+from langchain_openai import ChatOpenAI
 from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
 from rich.console import Console, Group
 from rich.markdown import Markdown
@@ -13,14 +13,19 @@ load_dotenv()
 console = Console()
 console.clear()
 
-api_key = os.getenv("NVIDIA_API_KEY")
-if not api_key:
-    console.print("[bold red]Error: NVIDIA_API_KEY 环境变量未设置。[/bold red]")
+base_url = os.getenv("BASE_URL")
+if not base_url:
+    console.print("[bold red]Error: BASE_URL 环境变量未设置。[/bold red]")
     sys.exit(1)
 
-model_name = os.getenv("MODAL_NAME")
+api_key = os.getenv("API_KEY")
+if not api_key:
+    console.print("[bold red]Error: API_KEY 环境变量未设置。[/bold red]")
+    sys.exit(1)
+
+model_name = os.getenv("MODEL_NAME") or os.getenv("MODAL_NAME")
 if not model_name:
-    console.print("[bold red]Error: MODAL_NAME 环境变量未设置。[/bold red]")
+    console.print("[bold red]Error: MODEL_NAME 或 MODAL_NAME 环境变量未设置。[/bold red]")
     sys.exit(1)
 
 sys_prompt_file = os.getenv("SYS_PROMPT_FILE")
@@ -31,18 +36,12 @@ if not sys_prompt_file:
 with open(sys_prompt_file, "r", encoding="utf-8") as f:
     sys_prompt = f.read()
 
-client = ChatNVIDIA(
+client = ChatOpenAI(
     model=model_name,
     api_key=api_key,
+    base_url=base_url,
     temperature=1,
-    top_p=0.95,
-    max_completion_tokens=16384,
-    model_kwargs={
-        "chat_template_kwargs": {
-            "enable_thinking": True,
-            "clear_thinking": False,
-        }
-    },
+    top_p=0.95
 )
 
 messages: list = [SystemMessage(content=sys_prompt)]

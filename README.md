@@ -1,6 +1,6 @@
 # unlimited AI
 
-TUI 中的无限制的 AI 对话，基于 NVIDIA AI 平台的 API 实现
+TUI 中的无限制的 AI 对话，支持 OpenAI 兼容格式的自定义 API
 支持**langchain 多轮对话**，**rich 流式渲染markdown**
 
 **AI 又不傻，为什么要限制它呢？**
@@ -25,13 +25,11 @@ pip install -r requirements.txt
 ```
 
 2. 设置用户 API
- - 从 [NVIDIA AI 平台](https://build.nvidia.com/settings/api-keys) 获取 API Key
- - 设置环境变量
+ - 复制 `.env.example` 为 `.env`
+ - 填写兼容 OpenAI Chat Completions API 的地址、API Key 和模型名
 
 ```bash
 cp .env.example .env
-
-# 编辑 .env 文件，将 NVIDIA_API_KEY 的值替换为你的 API Key
 ```
 
 > 可以在 `.env` 文件中修改 `SYS_PROMPT_FILE` 来适配不同的模型，或者自己设计 sys_prompt 来适配你自己的模型
