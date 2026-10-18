@@ -33,4 +33,4 @@ cp .env.example .env
 > 可以在 `.env` 文件中修改 `SYS_PROMPT_FILE` 来适配不同的模型，或者自己设计 sys_prompt 来适配你自己的模型
 
 ## 开源协议
-[MIT License](LICENSE)
+[AGPL-3.0 License](LICENSE)

@@ -1,7 +1,15 @@
 [project]
 name = "unlimited-ai"
 version = "0.1.0"
+description = "Unlimited AI - 基于 LangChain 的命令行聊天客户端"
+requires-python = ">=3.10"
+license = "AGPL-3.0-only"
+license-files = ["LICENSE"]
+authors = [
+    { name = "清木殇" },
+]
 dependencies = [
+    "langchain-core>=1.6.12",
     "langchain-openai>=1.7.2",
     "python-dotenv>=1.2.4",
     "rich>=15.0.0",
