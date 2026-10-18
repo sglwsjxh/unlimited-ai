@@ -17,12 +17,10 @@ TUI 中的无限制的 AI 对话，支持 OpenAI 兼容格式的自定义 API
 git clone https://github.com/sglwsjxh/unlimited-ai.git
 cd unlimited-ai
 
-python -m venv venv
-.\venv\Scripts\activate  # Windows
-source venv/bin/activate  # Linux/Mac
-
-pip install -r requirements.txt
+uv sync
 ```
+
+> 运行：`uv run main.py`
 
 2. 设置用户 API
  - 复制 `.env.example` 为 `.env`
@@ -35,4 +33,4 @@ cp .env.example .env
 > 可以在 `.env` 文件中修改 `SYS_PROMPT_FILE` 来适配不同的模型，或者自己设计 sys_prompt 来适配你自己的模型
 
 ## 开源协议
-MIT License
+[MIT License](LICENSE)
